@@ -155,7 +155,60 @@ class TestChorusLapilli(unittest.TestCase):
         tiles[0].click()
         self.assertTileIs(tiles[0], self.SYMBOL_X)
 
+    def test_win_is_detected(self):
+        '''Check game detects when X wins.'''
+        tiles = self.driver.find_element(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()
+        tiles[3].click()
+        tiles[1].click()
+        tiles[4].click()
+        tiles[2].click()
+        self.assertIn("Winner: X", self.driver.page_source)
 
+    def test_no_moves_after_win(self):
+        '''Check that no moves can be made after a player wins.'''
+        tiles = self.driver.find_element(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()
+        tiles[3].click()
+        tiles[1].click()
+        tiles[4].click()
+        tiles[2].click()
+        tiles[5].click()
+        self.assertTileIs(tiles[5], self.SYMBOL_BLANK)
+
+    def test_cannot_place_on_occupied_square(self):
+        '''Check that a player cannot place a piece on an occupied square.'''
+        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()
+        tiles[0].click()
+        self.assertTileIs(tiles[0], self.SYMBOL_X)
+
+    def test_cannot_move_to_non_adjacent_square(self):
+        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()
+        tiles[2].click()
+        tiles[1].click()
+        tiles[5].click()
+        tiles[3].click()
+        tiles[8].click()
+        tiles[0].click()
+        tiles[8].click()
+        self.assertTileIs(tiles[0], self.SYMBOL_X)
+
+    def test_valid_adjacent_move(self):
+        '''Check that a valid adjacent move correctly moves the piece.'''
+        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        tiles[0].click()
+        tiles[2].click()
+        tiles[1].click()
+        tiles[5].click()
+        tiles[3].click()
+        tiles[8].click()
+        tiles[0].click()
+        tiles[4].click()
+        self.assertTilesIs(tiles[0], self.SYMBOL_BLANK)
+        self.assertTileIs(tiles[4], self.SYMBOL_X)
+        
 # ================= [DO NOT MAKE ANY CHANGES BELOW THIS LINE] =================
 
 if __name__ != '__main__':
