@@ -216,7 +216,7 @@ class TestChorusLapilli(unittest.TestCase):
         tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
         status = self.driver.find_element(By.Class_NAME, "status")
         print("Status after move:", status.text)
-        print("Tile 3:, tiles[3].text, "Tile 4: tiles[4].text)
+        print("Tile 3:", tiles[3].text, "Tile 4:", tiles[4].text)
         self.assertTileIs(tiles[3], self.SYMBOL_BLANK)
         self.assertTileIs(tiles[4], self.SYMBOL_X)
         
