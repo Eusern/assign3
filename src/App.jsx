@@ -12,8 +12,8 @@ export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [selected, setSelected] = useState(null);
-  const xCount = square.filter((s) => s === "X").length;
-  const oCount = square.filter((s) => s === "O").length;
+  const xCount = squares.filter((s) => s === "X").length;
+  const oCount = squares.filter((s) => s === "O").length;
   const currentPiece = xIsNext ? "X" : "O";
   const currentCount = xIsNext ? xCount : oCount;
   const isMovingPhase = currentCount >= 3;
@@ -26,7 +26,7 @@ export default function Board() {
       if (squares[i]){
         return;
       }
-        const nextSquares = square.slice();
+        const nextSquares = squares.slice();
         nextSquares[i] = currentPiece;
         setSquares(nextSquares);
         setXIsNext(!xIsNext);
