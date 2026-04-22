@@ -17,7 +17,7 @@ export default function App() {
             mounting to <code>src/main.jsx</code>.
           </p>
           <div className="d-flex gap-2 flex-wrap align-items-center">
-            <Button variant="primary" onClick={() => setName('CS 35L')}>
+            <Button variant="primary" onClick={() => setName('Eusern')}>
               Set example name
             </Button>
             <Badge bg="secondary" pill>
