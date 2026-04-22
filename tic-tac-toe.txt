@@ -1,0 +1,32 @@
+Forked and cloned the starter code from the professor
+used ./helper init to set up local environment
+used ./helper dev to see changes in Chrome
+
+Tic-Tac-Toe
+The starter code in src/App.jsx showed how to create a single square with an X inside
+Then, to build the board,
+  Rename the square function to board because it will hold all 9 squares
+  Add two more square elements to make a row of 3, then wrap
+  do it again to create a 3x3
+Build Square element
+  Get each square component that takes in input values
+  Update the board to have squares 1-9
+Make Square Interactive
+  Add an onClick to the square and use console.log to verify it works
+  Import useState from React and give each square its own state
+  Changed click to set to 'X' when clicked
+Modifying Board
+  Moved the state to the Board instead of the Square and started with 9 nulls
+  square[i] for each square as value
+  Add onSquareClick and connect to the button onClick
+  handleClick(i) function that copies the square array and sets the next square, then calls setSquare
+Taking Turns
+  Add useState to track whose turn it is
+  Update handeClick to place 'X' when xIsNext is true and 'O' if  false
+  Add return if square[i] already filled so doesn't have overlapping
+Winner
+  Add caluclate winner that checks winning combinations
+  If winner exists return early with calculateWinner
+  If calculateWinner return something add string "Winner: X/O" and if not return "Next PLayer: X"
+
+  
