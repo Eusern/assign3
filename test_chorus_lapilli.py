@@ -204,9 +204,16 @@ class TestChorusLapilli(unittest.TestCase):
         tiles[5].click()
         tiles[3].click()
         tiles[8].click()
+        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        print("\nBoard before move:")
+        for i, t in enumerate(tiles):
+            print(f" tile {i}: '{t.text}'")
         tiles[3].click()
         tiles[4].click()
         tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
+        print("Board after move:")
+        for i, t in enumerate(tiles):
+            print(f" tile {i}: '{t.text}'")
         self.assertTileIs(tiles[3], self.SYMBOL_BLANK)
         self.assertTileIs(tiles[4], self.SYMBOL_X)
         
