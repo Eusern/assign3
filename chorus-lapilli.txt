@@ -1,0 +1,34 @@
+Start with tic-tac-toe
+Already had Square, Board, xIsNext, square state, handleClick, calculateWinner, and status display
+Highlight
+  Add highlight to the Square function
+  when highlight is true, button
+Tracking piece counts and game phase
+  Inside board, calculate x and o Count by filtering
+  when isMovingPhase true current player move existing piece
+Selected State
+  Added selected null to board
+  selected has index of piece current player is moving
+HandleClick for invalid moving
+  If the click square is already take then no move
+  If not taken then place at square[i]
+HandleClick for valid moving
+  For the first move
+    if the click doesn't have a current piece then ignore the click
+    if not then the selected square gets marked
+  Second move
+    if the same square click they deselected
+    if their own piece clicked then selected that piece
+    if opponent clicked then invalid
+    if the move is not adjacent then invalid
+    if none fo these then place the current piece at i
+Helper function for isAdjacent
+  converts indices to row, col
+  if both row and column are different by more than 1 then return true
+Center Rule
+  checks if cuurrent player is in the center
+  if then, only a winning move is allowed or leave center
+  if nothing then reset and don't update state
+Status
+  show different status for if a piece is selected and where to go
+  
