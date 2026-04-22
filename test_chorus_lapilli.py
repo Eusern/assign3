@@ -197,6 +197,7 @@ class TestChorusLapilli(unittest.TestCase):
 
     def test_valid_adjacent_move(self):
         '''Check that a valid adjacent move correctly moves the piece.'''
+        import time
         tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
         tiles[0].click()
         tiles[2].click()
@@ -204,16 +205,10 @@ class TestChorusLapilli(unittest.TestCase):
         tiles[5].click()
         tiles[3].click()
         tiles[8].click()
-        tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
-        print("\nBoard before move:")
-        for i, t in enumerate(tiles):
-            print(f" tile {i}: '{t.text}'")
         tiles[3].click()
+        time.sleep(0.5)
         tiles[4].click()
         tiles = self.driver.find_elements(By.XPATH, self.BOARD_TILE_XPATH)
-        print("Board after move:")
-        for i, t in enumerate(tiles):
-            print(f" tile {i}: '{t.text}'")
         self.assertTileIs(tiles[3], self.SYMBOL_BLANK)
         self.assertTileIs(tiles[4], self.SYMBOL_X)
         
